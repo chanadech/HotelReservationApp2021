@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelReservationApp">
-        <activity android:name=".presentation.hotel.SplashActivity"
-            android:theme="@style/Splash"
+        <activity android:name=".presentation.hotel.menu.MenuActivity2"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".presentation.hotel.menu.MenuActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".presentation.hotel.SplashActivity"
             android:exported="true"
-            >
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +26,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.hotel.MainActivity"
-           />
+            android:name=".presentation.hotel.login.LoginActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

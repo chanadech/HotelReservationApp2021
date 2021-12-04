@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -93,4 +97,6 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$Glide_version"
     //Glide SVG
     implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
+
+
 }

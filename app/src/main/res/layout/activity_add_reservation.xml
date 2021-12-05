@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.omarshehe.forminputkotlin.FormInputText
+            android:id="@+id/ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:customer_hint="Customer ID number"
+            app:customer_inputType="number"
+            app:customer_isMandatory="false"
+            app:customer_label="Passport / ID Number"
+            app:customer_value=""
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/payment_type" />
+
+        <TextView
+            android:id="@+id/tvDateEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:text="End Date"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintEnd_toStartOf="@+id/button_test"
+            app:layout_constraintHorizontal_bias="0.23"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toTopOf="@+id/textView12"
+            app:layout_constraintVertical_bias="0.333" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Select Date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ID" />
+
+        <TextView
+            android:id="@+id/firstDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Reserved Date:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/tvDateStart"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:text="Start Date"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/firstDate"
+            app:layout_constraintStart_toEndOf="@+id/firstDate"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Return Date: "
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDateStart"
+            app:layout_constraintStart_toEndOf="@+id/tvDateStart"
+            app:layout_constraintTop_toTopOf="@+id/tvDateStart"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.omarshehe.forminputkotlin.FormInputText
+            android:id="@+id/first_name_customer"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="108dp"
+            android:inputType="textAutoCorrect"
+            app:customer_hint="customer first name"
+            app:customer_inputType="text"
+            app:customer_isMandatory="true"
+            app:customer_label="First Name"
+            app:customer_value=""
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.omarshehe.forminputkotlin.FormInputText
+            android:id="@+id/last_name_customer"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:inputType="textAutoCorrect"
+            app:customer_hint="customer last name"
+            app:customer_inputType="text"
+            app:customer_isMandatory="true"
+            app:customer_label="Last Name"
+            app:customer_value=""
+            app:layout_constraintBottom_toBottomOf="@+id/first_name_customer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/first_name_customer"
+            app:layout_constraintTop_toTopOf="@+id/first_name_customer" />
+
+
+        <com.omarshehe.forminputkotlin.FormInputMultiline
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            app:customer_height="100"
+            app:customer_hint="Customer Address"
+            app:customer_isMandatory="true"
+            app:customer_label="Customer address"
+            app:customer_maxLength="500"
+            app:customer_value=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_name_customer" />
+
+        <com.omarshehe.forminputkotlin.FormInputText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            app:customer_hint="customer phone number"
+            app:customer_inputType="phoneNumber"
+            app:customer_isMandatory="true"
+            app:customer_label="Phone Number"
+            app:customer_value=""
+            app:layout_constraintTop_toBottomOf="@+id/about"
+            tools:layout_editor_absoluteX="32dp" />
+
+
+        <com.omarshehe.forminputkotlin.FormInputSpinner
+            android:id="@+id/payment_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            app:customer_array="@array/headings"
+            app:customer_hint="Select Payment Type"
+            app:customer_isMandatory="true"
+            app:customer_label="Payment Type"
+            app:customer_value=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumber">
+
+        </com.omarshehe.forminputkotlin.FormInputSpinner>
+
+        <Button
+            android:id="@+id/button_test"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/ic_baseline_calendar_today_24"
+            android:textColor="@color/colorGrey"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDateEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDateEnd"
+            app:layout_constraintVertical_bias="0.875" />
+
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text="|"
+            android:textColor="@color/colorGrey"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintEnd_toStartOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.35"
+            app:layout_constraintStart_toEndOf="@+id/tvDateStart"
+            app:layout_constraintTop_toTopOf="@+id/tvDateStart"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.omarshehe.forminputkotlin.FormInputButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:customer_background="@color/black"
+            app:customer_progressColor="@color/colorGrey"
+            app:customer_showProgress="false"
+            app:customer_textColor="@color/white"
+            app:customer_value="@string/Submit"
+            app:customer_valueOnLoad="Please, wait.."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="@dimen/menu_bar_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_back_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:background="@android:color/transparent"
+                android:padding="@dimen/common_padding"
+                android:src="@drawable/icon_arrow_backward" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/cinzeldecorative_bold"
+            android:gravity="center"
+            android:text="Add Reservation"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</layout>

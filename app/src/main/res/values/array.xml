@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="headings">
+        <item>Visa</item>
+        <item>Master Card</item>
+        <item>Cash</item>
+
+
+    </string-array>
+</resources>

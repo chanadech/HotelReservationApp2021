@@ -99,4 +99,9 @@ dependencies {
     implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
 
 
+    //form
+    implementation 'com.github.OmarShehe.FormInputs:forminputkotlin:1.0.1'
+
+
+
 }

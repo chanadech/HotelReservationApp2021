@@ -8,6 +8,7 @@ import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivityReservationMenuBinding
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.menu.MenuActivity2
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_add.AddReservationActivity
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.SearchReservationActivity
 
 class ReservationMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReservationMenuBinding
@@ -21,6 +22,10 @@ class ReservationMenuActivity : AppCompatActivity() {
 
         binding.btnBackMenu.setOnClickListener{
             val intent = Intent(this, MenuActivity2::class.java)
+            startActivity(intent)
+        }
+        binding.cardView4.setOnClickListener{
+            val intent = Intent(this, SearchReservationActivity::class.java)
             startActivity(intent)
         }
         binding.cardView.setOnClickListener{

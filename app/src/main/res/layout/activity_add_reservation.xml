@@ -235,17 +235,14 @@
             app:layout_constraintTop_toTopOf="@+id/tvDateStart"
             app:layout_constraintVertical_bias="0.0" />
 
-        <com.omarshehe.forminputkotlin.FormInputButton
+        <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:customer_background="@color/black"
-            app:customer_progressColor="@color/colorGrey"
-            app:customer_showProgress="false"
-            app:customer_textColor="@color/white"
-            app:customer_value="@string/Submit"
-            app:customer_valueOnLoad="Please, wait.."
+            android:text="Confirm Reservation"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -282,6 +279,8 @@
             app:layout_constraintEnd_toEndOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="@id/toolbar"
             app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

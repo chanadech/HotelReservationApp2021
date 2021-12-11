@@ -1,0 +1,33 @@
+package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.di
+
+import com.example.dechproduct.hotelreservationapp.BuildConfig
+import com.example.dechproduct.hotelreservationapp.data.api.NewsAPIService
+import com.google.gson.Gson
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+class NetModule {
+
+    //create new funtion to provide retrofit instance
+    @Singleton
+    @Provides
+    fun provideRetrofit():Retrofit{
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BuildConfig.BASE_URL)
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideNewsAPIService(retrofit: Retrofit): NewsAPIService{
+        return retrofit.create(NewsAPIService::class.java)
+    }
+}

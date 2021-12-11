@@ -1,10 +1,15 @@
 package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_add
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivityAddReservationBinding
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.login.LoginActivity
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_menu.ReservationMenuActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,7 +22,20 @@ class AddReservationActivity : AppCompatActivity() {
 
         binding.buttonTest.setOnClickListener {
             showDateRangePicker()
+        }
 
+        binding.btnSubmit.setOnClickListener{
+            Toast.makeText(applicationContext, "Mekh za 007", Toast.LENGTH_LONG).show()
+        }
+
+        binding.buttonCamera.setOnClickListener {
+            Toast.makeText(applicationContext, "Mekh za 007 tap camera", Toast.LENGTH_LONG).show()
+
+        }
+
+        binding.btnBackMenu.setOnClickListener{
+            val intent = Intent(this, ReservationMenuActivity::class.java)
+            startActivity(intent)
         }
 
     }

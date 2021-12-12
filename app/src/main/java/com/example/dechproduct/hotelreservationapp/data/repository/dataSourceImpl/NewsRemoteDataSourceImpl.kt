@@ -8,8 +8,8 @@ import java.nio.channels.spi.AbstractSelectionKey
 
 class NewsRemoteDataSourceImpl(
     private val newsAPIService: NewsAPIService
-): NewsRemoteDataSource{
-    override suspend fun getTopHeadLines(country:String, page:Int): Response<APIResponse> {
-        return newsAPIService.getTopsHeadlines(country, page)
+):NewsRemoteDataSource {
+    override suspend fun getTopHeadlines(country : String, page : Int): Response<APIResponse> {
+        return newsAPIService.getTopHeadlines(country,page)
     }
 }

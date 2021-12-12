@@ -241,4 +241,92 @@
 4. สร้าง package call di ไปดูส่วน 18: 140 dependency+Hilt
         
 11. Create Fragment Part display (Dech)
-    using viewBinding -> SearchReservationActivity
+    using viewBinding -> SearchReservationActivity เป็น base activity ที่ใช้กับหลายๆ fragment
+12. Create Nav Graph  NewsFragment InfoFragment SavedFragment
+13. Create Recycler View ในหน้าที่อยากให้แสดง -> 
+    13.1 สร้าง List Item layout ก่อน คือหน้า news_list_item
+    13.2 สร้าง recycler view + progress bar ในหน้าที่อยากให้แสดง คือหน้า fragment_news
+    13.3 สร้าง adapter class กับ recycler view ใข้ dift util for handle the performance ไม่ให้มันโหลดซ้ำ คือหน้า NewsAdapter
+    13.4 กลับไปหน้าที่อยากแสดง list คือหน้า NewsFragment แล้วเขียนโค้ดเพื่อแสดง data ที่สร้างที่ adapter
+    
+14.  Relation 1 Activity and a lot of fragment -> Construct an instance of viewModel inside the activity and share it among fragments
+    -> Define ViewModel at SearchReservationActivity   
+        -> สร้าง viewmodel ต้องใข้ viewmodel factory ด้วย -> ใช้ dependency injection
+            -> สร้าง dagger hilt เพื่อ provide the viewmodel factory -> annotate class ที่จะใช้ด้วย  @AndroidEntryPoint
+                -> กำหนด SearchReservationViewModel Factory instance -> annotate with @Inject annotation
+                    -> เขียน code เพื่อ get viewmodel โดยใช้ viewmodel provider -> 
+                    -> กลับไปที่  newsfragment และเขียน code เพื่อ get viewmodel instance  ที่เราสร้างจาก activity นี้เอาไปใข้ต่อ
+                        -> Generate onViewCreated สำหรับ fragment ที่จะเอาไปใช้ (ใข้ onViewCreated เพร่าะว่ามันจะถูก call ทันทีหลังจากเมื่อทุก view ถูกสร้างแล้ว ซึ่งจะปลอดภัยเพราะช่วยเลี่ยงพวก error ได้)
+    -> NewsFragment
+        -> หลังจาก generate onViewCreated แล้ว หลังจากนั้นเราจะกำหนด viewModel ที่เอามาจาก activity ที่เราสร้างไปมาใข้ใน fragment ที้ต้องการ
+              -> viewModel = (activity ad MainActivity).viewModel    
+        -> เขียน code สำหรับ get binding object สำหรับ viewbinding    
+          ex)     private lateinit var fragmentNewsBinding: FragmentNewsBinding 
+          
+                   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+                          super.onViewCreated(view, savedInstanceState)
+                          fragmentNewsBinding = FragmentNewsBinding.bind(view) <-- here
+                          viewModel = (activity as SearchReservationActivity).viewModel
+                      }
+        -> สร้าง function สำหรับ initialize recycler view ใน fragment ที่เราต้องการแสดง
+            -> สร้าง adapter instance object (ที่ทำมาแล้ว) เพื่อ assign ไปที่ recyclerview adapter แล้วก็ set recyclerview layout เป็น linear layout manager -> ใช้ apply function kotlin
+            -> สร้าง 2 ฟังก์ชันสำหรับ view / hide progress bar   
+            -> สร้าง function สำหรับแสดงผล newslist  -> fun viewNewsList()  
+                    -> เริ่มเขียนโดยการเรียก getNewsHeadLines function ที่ทำไว้ใน viewModel มาใช้เลย -> ต้อง pass country name กับ page number เป็น argument
+                            class SearchReservationViewModel()
+                                ...
+                            fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch (Dispatchers.IO) { <-- here
+                                    newsHeadlines.postValue(Resource.Loading())
+                                    try{
+                                        if(isInternetAvailable(app)){
+                                            val apiResult = getNewHeadlinesUseCase.execute(country, page)
+                                            newsHeadlines.postValue(apiResult)
+                                        }else{
+                                            newsHeadlines.postValue(Resource.Error("Internet is not available"))
+                                        }
+                                        }catch (e:Exception){
+                                            newsHeadlines.postValue(Resource.Error(e.message.toString()))
+                                    }
+                    -> สร้างฟังก์ชัน get list จาก viewmodel
+                            private val country = "us"
+                            private val page = 1
+                            .
+                            private fun viewNewsList() { <--here
+                                    viewModel.getNewsHeadLines(country,page)
+                                }
+                
+           ->  observe newsHeadLines Mutable LiveData ที่มาจาก viewModel
+                
+                class SearchReservationViewModel(
+                
+                    private val app: Application,
+                    private val getNewHeadlinesUseCase: GetNewHeadlinesUseCase
+                ) : AndroidViewModel(app) {
+                
+                    val newsHeadlines : MutableLiveData<Resource<APIResponse>> = MutableLiveData() <--  นี้ here
+
+                class SearchReserActivity
+                    .
+                    .
+                   private fun viewNewsList() {                                             <--here
+                        viewModel.getNewsHeadLines(country,page)
+                        viewModel.newsHeadLines.observe(viewLifecycleOwner, {response ->    // <-- มานี้ here
+                        when (response){                                                     <--สำหรับเขียน status success error loading จาก Resource class
+                            is Resource.Success -> {                                        // success ให้ hide progressbar และ ส่ง received data ไปที่ adapter
+                                 hideProgressBar()
+                                 response.data?.let{
+                                        newsAdapter.differ.submitList(it.articles.toList())
+                                 }
+                            }
+                             is Resource.Error -> {)                                         // Error ให้ hide progressbar และ Show toast message ที่แสดง error
+                             is Resource.Loading -> {)                                      // loading ให้ show progressbar 
+                        )
+                    }
+                    
+                    // เสร็จหน้า load data มา show
+         
+
+
+            
+            
+    

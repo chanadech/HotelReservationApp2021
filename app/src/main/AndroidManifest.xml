@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelReservationApp" >
 
-        <activity android:name=".presentation.hotel.reservation.reservation_search.SearchReservationActivity" />
+        <activity
+            android:name=".presentation.hotel.reservation.reservation_search.SearchReservationActivity" />
         <activity
             android:name=".presentation.hotel.reservation.reservation_add.AddReservationActivity"
             android:theme="@style/Theme.HotelReservationApp" />

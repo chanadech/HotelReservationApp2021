@@ -7,17 +7,15 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NewsAPIService {
-    // suspend fun ใส่เพราะใช้ coroutine with retrofit
-
     @GET("v2/top-headlines")
-    suspend fun getTopsHeadlines(
+    suspend fun getTopHeadlines(
         @Query("country")
-        country: String,
+        country:String,
         @Query("page")
-        page: Int,
+        page:Int,
         @Query("apiKey")
         apiKey:String = BuildConfig.API_KEY
-    ):Response<APIResponse>
-
+    ): Response<APIResponse>
 
 }
+// suspend fun ใส่เพราะใช้ coroutine with retrofit

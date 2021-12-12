@@ -14,11 +14,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetModule {
-
-    //create new funtion to provide retrofit instance
     @Singleton
     @Provides
-    fun provideRetrofit():Retrofit{
+    fun provideRetrofit():Retrofit{     //create new funtion to provide retrofit instance
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)

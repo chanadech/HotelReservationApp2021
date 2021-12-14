@@ -17,7 +17,7 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/cinzeldecorative_bold"
             android:text="Hotel Management"
-            android:textColor="@color/colorText"
+            android:textColor="@color/black"
             android:textSize="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

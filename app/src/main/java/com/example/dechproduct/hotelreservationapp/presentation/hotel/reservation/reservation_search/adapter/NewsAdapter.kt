@@ -2,6 +2,7 @@ package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservati
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.OnReceiveContentListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -68,8 +69,20 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 .load(article.urlToImage)
                 .into(binding.ivArticleImage)
 
+            binding.root.setOnClickListener{
+                onItemClickListener?.let {
+                    it(article)
+                }
+            }
+
         }
     }
+    private var onItemClickListener: ((Article) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Article) ->Unit){
+        onItemClickListener = listener
+    }
+
 }
 
 

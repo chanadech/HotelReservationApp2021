@@ -327,6 +327,203 @@
          
 
 
-            
-            
+    15. Refactor นิดหน่อย จากสร้าง instance ใหม่ เป็น dagger module แทน
+    เดิม    NewwFragment
     
+       private fun initRecyclerView() {
+            newsAdapter = NewsAdapter() <--here
+            fragmentNewsBinding.rvNews.apply {
+                adapter = newsAdapter
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
+        
+        ใหม่
+       15.1 สร้าง Adapter Module มา ชื่อว่า AdapterModule ในdi
+        
+        @Module
+        @InstallIn(SingletonComponent::class)
+        class AdapterModule {
+         
+         สร้าง function สำหรับ provide new adapter dependency (อย่าลืมประกาศ @Provide, @Singleton)
+        
+        @Singleton  <--here
+        @Provide    <--here
+       
+         fun provideNewsAdapter():NewsAdapter{
+         return NewsAdapter()   <--here
+         }
+            }
+            
+         กลับไป call ที่ SearchReservationActivity และสร้าง object reference var สำหรับ NewsAdapter 
+         อย่าลืมใส่ @Inject
+         
+       15.2  SearchReservationActivity.kt
+         
+         @Inject
+         lateinit var newsAdapter: NewsAdapter
+         
+       15.3 กลับไปหน้า news fragment และเขียน code เพื่อ share การ injected dependency จาก SearchActivity (ทำแบบเดียวกับที่เคยทำใน viewModel)
+       
+       เดิม
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+               super.onViewCreated(view, savedInstanceState)
+               fragmentNewsBinding = FragmentNewsBinding.bind(view)
+               viewModel= (activity as SearchReservationActivity).viewModel
+               initRecyclerView()
+               viewNewsList()
+           }
+        ใหม่
+         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+                super.onViewCreated(view, savedInstanceState)
+                fragmentNewsBinding = FragmentNewsBinding.bind(view)
+                viewModel= (activity as SearchReservationActivity).viewModel  <--ทำคล้ายๆแบบนี้
+                newsAdapter = (activity as SearchReservationActivity).newsAdapter  <--here
+                initRecyclerView()
+                viewNewsList()
+            }   
+                    
+  16. ทำ paging สำหรับ load data หน้่าที่เหลือ
+    NewsFragment สร้าง boolean parameter สำหรับ check ว่า scroll สุดยัง -> มี false เป็น default 
+    -> overide recycler view on scroll listener
+    
+     private val onScrollListener = object : RecyclerView.OnScrollListener(){
+                super.onScrollStateChanged(recyclerView, newState)
+                
+                //override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) { <-- ต้องเขียน               // code ตรงนี้ สำหรับ check ว่า scroll ไปถึงไหน 
+                // โดย check ว่า scroll เป็น true ถ้า user scroll อยู่ใน list ที่โหลดมาแล้ว
+                
+                if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                isScrolling = true
+                } 
+                
+            }
+    
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) { 
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = fragmentNewsBinding.rvNews.layoutManager as LinearLayoutManager 
+                // จะเอา 3 property ของ recycler view ตอนนี้ 
+                    -> size ของ current list   -> size = 20,
+                    -> visible item count      ->  ในนี้ visible item count = 0..19
+                    -> starting position of visible item    -> start position = 0..19
+                    -> get size ของ current list จาก layout manager
+                val sizeOftheCurrentList = layoutManager.itemCount  <-size
+                val  visibleItems = layoutManager.childCount     <-- visible item count
+                val topPosition = layoutManager.findFirstVisibleItemPosition() <-- position of starting item of current visible item
+                
+                 //log ดู value
+                 //The current list has to reach to the last item before we do pagination -> check using                    //topposition, visibleitem, sizeofCurrentList
+                  val hasReachedToEnd = topPosition+visibleItems >= sizeOfTheCurrentList
+                  
+                  //กำหนด variable สำหรับ check loading -> เมื่อ data load ให้ show progressbar 
+                  -> ใข้ function showProgressbar สำหรับ set เป็น true, hide progress bar set isloading = false
+                  private var isLoading = false
+              
+                  private fun showProgressBar(){
+                      isLoading = true
+                      fragmentNewsBinding.progressBar.visibility = View.VISIBLE
+                  }
+                  
+                  // สร้าง variable for check the last page
+                  // Add algo ตรง ViewNewsList  สำหรับ check ว่า if the current page is the last page
+                   -> 20 เป็น default page size สำหรับ api 
+                   -> นี้จะทำให้ give interval value -> เพราะเรา divide 2 int even if it has a decimal part 
+                   -> This will only give the last integral value -> ใช้ if else block using module operator
+                 
+                  NewsFragment.kt
+                  
+                  private var isLastPage = false
+                  
+                     private fun viewNewsList() {
+                 
+                         viewModel.getNewsHeadLines(country,page)
+                         viewModel.newsHeadlines.observe(viewLifecycleOwner,{response->
+                             when(response){
+                                 is Resource.Success->{
+                 
+                                     hideProgressBar()
+                                     response.data?.let {
+                                         Log.i("MYTAG","came here ${it.articles.toList().size}")
+                                         newsAdapter.differ.submitList(it.articles.toList())
+                                         if(it.totalResults%20 == 0){                   <-- here
+                                          pages = it.totalResults/20
+                                         } else {
+                                             pages = it.totalResults/20+1
+                                         }
+                                         isLastPages = page == pages
+                 
+                                         }
+                                 }
+                  
+17. ทำ pagination      -> onScrolled function
+
+          override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = fragmentNewsBinding.rvNews.layoutManager as LinearLayoutManager // จะเอา 3 property ของ recycler view ตอนนี้ -> size ของ current ;ist
+                val sizeOfTheCurrentList = layoutManager.itemCount
+                val visibleItems = layoutManager.childCount
+                val topPosition = layoutManager.findFirstVisibleItemPosition()
+    
+                //The current list has to reach to the last item before we do pagination 
+                //-> check using topposition, visibleitem, sizeofCurrentList
+                
+                val hasReachedToEnd = topPosition+visibleItems >= sizeOfTheCurrentList
+    
+                // if data ยังโหลดอยู๋ / last page ->ไม่ต้อง paginate -> ให้ reached to the end -> user still                       scroll the list
+                //pagination happen -> page number increase by 1 -> invoke getNewsHeadLines function of                    //viewModel โดยใช้ new page number -> set isScroll = false
+                // include addOnScrollListener to initRecyclerView
+    
+                val shouldPaginate = !isLoading && !isLastPages && hasReachedToEnd && isScrolling
+                if(shouldPaginate){
+                    page++
+                    viewModel.getNewsHeadLines(country, page)
+                    isScrolling = false
+                }
+            }
+                
+18. webview -> show info page     
+
+19. add search ->  ApiService 
+                -> newsRemoteDataSource interface for search data (อย่าลืมuodate implement class ด้วย)
+                -> add function to newsRepository interface  -> getSearchedNews   
+                -> update newsRepository Impl
+                -> modify GetSearchNewsUseCase -> add country and page as parameter in execute fn
+                Finish usecase 
+                -> Presentation layer
+                -> SearchedReservationViewModel -> add GetSearchedNewsUseCase as a Constructor parameter                    to view model class -> write code to get search results from the use case 
+                    -> define mutable live data for searched list 
+                    ->     //searchviewmodel
+                           val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+                       
+                           fun searchNews(
+                               country: String,
+                               searchedQuery: String,
+                               page: Int
+                           ) = viewModelScope.launch {      //use network bg for coroutine
+                               searchedNews.postValue(Resource.Loading())
+                       
+                               try {
+                                   if (isInternetAvailable(app)) { 
+                                   //get search resukt using use case insatnce
+                                       val response = getSearchedNewsUseCase.execute(
+                                           country,
+                                           searchedQuery,
+                                           page
+                                       )
+                                       searchedNews.postValue(response)
+                                   } else {
+                                       searchedNews.postValue(Resource.Error("No Interner Connection"))
+                                   }
+                               } catch (
+                                   e: Exception
+                               ) {
+                                   searchedNews.postValue(Resource.Error(e.message.toString()))
+                               }
+                           }
+                       }  
+                       
+                    -> 2 dependency module affect from the new changes   
+                          -> usecase , factory module
+                    -> fragment_news.xml -> handle some design
+                    -> newsfragment.kt -> implement search function     
+                    

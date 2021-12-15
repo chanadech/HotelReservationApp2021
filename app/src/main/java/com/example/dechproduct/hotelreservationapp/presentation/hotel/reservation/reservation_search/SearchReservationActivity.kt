@@ -1,14 +1,14 @@
 package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivitySearchReservationactivityBinding
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.menu.MenuActivity2
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_menu.ReservationMenuActivity
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.adapter.NewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +22,10 @@ class SearchReservationActivity : AppCompatActivity() {
     lateinit var newsAdapter: NewsAdapter
     lateinit var viewModel: SearchReservationViewModel
     private lateinit var binding:ActivitySearchReservationactivityBinding
+
+    @Transient
+    var mContext: Context? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,9 +33,10 @@ class SearchReservationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        //here
         binding.btnBackMenu.setOnClickListener{
             val intent = Intent(this, ReservationMenuActivity::class.java)
-            startActivity(intent)
+            mContext?.startActivity(intent)
         }
 
         // เชื่อมหน้า fragment

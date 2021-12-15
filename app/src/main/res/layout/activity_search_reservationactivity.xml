@@ -30,6 +30,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:background="@android:color/transparent"
                 android:padding="@dimen/common_padding"
+                android:visibility="gone"
                 android:src="@drawable/icon_arrow_backward" />
         </FrameLayout>
 

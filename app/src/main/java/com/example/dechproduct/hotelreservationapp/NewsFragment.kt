@@ -259,8 +259,8 @@ class NewsFragment : Fragment() {
     fun viewSearchedNews(){
 //        viewModel.getNewsHeadLines(country,page)
         //if ( view != null){ // careful here
-
-        viewModel.searchedNews.observe(viewLifecycleOwner,{response->
+        if(view != null){
+        viewModel.searchedNews.observe(viewLifecycleOwner,{ response->
             when(response){
                 is Resource.Success->{
 
@@ -283,7 +283,6 @@ class NewsFragment : Fragment() {
                         Toast.makeText(activity,"An error occurred : $it", Toast.LENGTH_LONG).show()
                     }
                 }
-
                 is Resource.Loading->{
                     showProgressBar()
                 }
@@ -291,6 +290,7 @@ class NewsFragment : Fragment() {
             }
         })
         //}
+        }
     }
 
 }

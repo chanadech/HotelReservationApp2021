@@ -105,7 +105,7 @@ class NewsFragment : Fragment() {
     private  lateinit var viewModel: SearchReservationViewModel
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var fragmentNewsBinding: FragmentNewsBinding
-    private var country = "th"
+    private var country = "us"
     private var page = 1
     private var isScrolling: Boolean = false
     private var isLoading = false
@@ -258,6 +258,8 @@ class NewsFragment : Fragment() {
     // need to implement the setOnQuryTextListener of search view -
     fun viewSearchedNews(){
 //        viewModel.getNewsHeadLines(country,page)
+        //if ( view != null){ // careful here
+
         viewModel.searchedNews.observe(viewLifecycleOwner,{response->
             when(response){
                 is Resource.Success->{
@@ -288,6 +290,7 @@ class NewsFragment : Fragment() {
 
             }
         })
+        //}
     }
 
 }

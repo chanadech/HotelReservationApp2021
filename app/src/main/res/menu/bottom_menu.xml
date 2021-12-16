@@ -4,9 +4,9 @@
     <item
         android:id="@+id/newsFragment"
         android:icon="@drawable/ic_baseline_assignment_ind_24"
-        android:title="News Headlines" />
+        android:title="Available Rooms" />
     <item
         android:id="@+id/savedFragment"
         android:icon="@drawable/ic_baseline_save_24"
-        android:title="Save News" />
+        android:title="Save Rooms" />
 </menu>

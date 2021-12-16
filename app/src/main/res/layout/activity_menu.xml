@@ -61,7 +61,8 @@
                     android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/ic_launcher_background"
+                    app:srcCompat="@drawable/villa_de_kestrel" />
             </RelativeLayout>
 
             <LinearLayout

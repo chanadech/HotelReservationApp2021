@@ -2,7 +2,6 @@ package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservati
 
 import android.app.Application
 import com.example.dechproduct.hotelreservationapp.domain.usecase.GetNewHeadlinesUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.GetSearchedNewsUseCase
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.SearchReservationViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -18,13 +17,11 @@ class FactoryModule {
     @Provides
     fun provideNewViewModelFactory(
         application: Application,
-        getNewsHeadlinesUseCase: GetNewHeadlinesUseCase,
-        getSearchedNewsUseCase: GetSearchedNewsUseCase
+        getNewsHeadlinesUseCase: GetNewHeadlinesUseCase
     ):SearchReservationViewModelFactory{
         return SearchReservationViewModelFactory(
             application,
-            getNewsHeadlinesUseCase,
-            getSearchedNewsUseCase
+            getNewsHeadlinesUseCase
         )
     }
 }

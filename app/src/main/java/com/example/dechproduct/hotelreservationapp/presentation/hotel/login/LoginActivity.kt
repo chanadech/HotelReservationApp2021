@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
             this, R.layout.activity_login)
 
         binding.btSignIn.setOnClickListener{
-            val intent = Intent(this,MenuActivity2::class.java )
+            val intent = Intent(this,MenuActivity::class.java )
             startActivity(intent)
         }
 

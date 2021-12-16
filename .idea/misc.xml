@@ -17,15 +17,17 @@
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.4197916666666667" />
         <entry key="app/src/main/res/layout/activity_add_reservation.xml" value="0.41139680333564976" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.40729166666666666" />
         <entry key="app/src/main/res/layout/activity_menu2.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_reservation_menu.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/activity_search_reservationactivity.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.30833333333333335" />
-        <entry key="app/src/main/res/layout/news_list_item.xml" value="0.19067028985507245" />
+        <entry key="app/src/main/res/layout/news_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_hotel.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_hotel_round.xml" value="0.24635416666666668" />
       </map>
     </option>
   </component>

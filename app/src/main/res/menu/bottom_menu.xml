@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/newsFragment"
-        android:icon="@drawable/ic_baseline_assignment_ind_24"
-        android:title="Available Rooms" />
+        android:icon="@drawable/ic_baseline_supervisor_account_24"
+        android:title="Customer List" />
     <item
         android:id="@+id/savedFragment"
-        android:icon="@drawable/ic_baseline_save_24"
-        android:title="Save Rooms" />
+        android:icon="@drawable/ic_baseline_bedroom_parent_24"
+        android:title="Reserved Rooms" />
 </menu>

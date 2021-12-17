@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dechproduct.hotelreservationapp.data.util.Resource
 import com.example.dechproduct.hotelreservationapp.databinding.FragmentNewsBinding
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.SearchReservationActivity
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.SearchReservationViewModel
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.adapter.NewsAdapter
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationActivity
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationViewModel
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.adapter.NewsAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

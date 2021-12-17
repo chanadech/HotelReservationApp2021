@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".presentation.hotel.reservation.reservation_search.NewsApp"
+        android:name="com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.NewsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,21 +15,21 @@
         android:theme="@style/Theme.HotelReservationApp" >
 
         <activity
-            android:name=".presentation.hotel.reservation.reservation_search.SearchReservationActivity" />
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationActivity" />
         <activity
-            android:name=".presentation.hotel.reservation.reservation_add.AddReservationActivity"
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_add.AddReservationActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
-            android:name=".presentation.hotel.reservation.ReservationMenuActivity"
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.reservation.ReservationMenuActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
-            android:name=".presentation.hotel.menu.MenuActivity"
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.menu.MenuActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
-            android:name=".presentation.hotel.menu.deprecated_MenuActivity"
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.menu.deprecated_MenuActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
-            android:name=".presentation.hotel.SplashActivity"
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.SplashActivity"
             android:exported="true"
             android:theme="@style/Splash" >
             <intent-filter>
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.hotel.login.LoginActivity"
+            android:name="com.example.dechproduct.hotelreservationapp.presentation.login.LoginActivity"
             android:theme="@style/Theme.HotelReservationApp" />
     </application>
 

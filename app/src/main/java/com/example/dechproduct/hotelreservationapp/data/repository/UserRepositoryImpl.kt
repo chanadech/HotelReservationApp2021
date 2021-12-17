@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.example.dechproduct.hotelreservationapp.data.model.User
 import com.example.dechproduct.hotelreservationapp.domain.repository.UserRepository
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.util.Resource
+import com.example.dechproduct.hotelreservationapp.util.Resource
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject

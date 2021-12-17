@@ -20,13 +20,13 @@
             android:name=".presentation.hotel.reservation.reservation_add.AddReservationActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
-            android:name=".presentation.hotel.reservation.reservation_menu.ReservationMenuActivity"
-            android:theme="@style/Theme.HotelReservationApp" />
-        <activity
-            android:name=".presentation.hotel.menu.MenuActivity2"
+            android:name=".presentation.hotel.reservation.ReservationMenuActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
             android:name=".presentation.hotel.menu.MenuActivity"
+            android:theme="@style/Theme.HotelReservationApp" />
+        <activity
+            android:name=".presentation.hotel.menu.deprecated_MenuActivity"
             android:theme="@style/Theme.HotelReservationApp" />
         <activity
             android:name=".presentation.hotel.SplashActivity"

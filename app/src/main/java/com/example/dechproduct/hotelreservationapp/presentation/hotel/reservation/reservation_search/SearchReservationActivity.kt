@@ -9,7 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivitySearchReservationactivityBinding
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_menu.ReservationMenuActivity
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.ReservationMenuActivity
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.adapter.NewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

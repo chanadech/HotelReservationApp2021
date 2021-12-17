@@ -6,7 +6,7 @@ import com.example.dechproduct.hotelreservationapp.data.repository.UserRepositor
 import com.example.dechproduct.hotelreservationapp.domain.repository.UserRepository
 import com.example.dechproduct.hotelreservationapp.domain.usecase.UseCase
 import com.example.dechproduct.hotelreservationapp.domain.usecase.login.LoginUseCase
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.util.FirebaseConstants
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.util.Constants
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
@@ -22,13 +22,13 @@ object LoginModule {
     @Provides
     @Singleton
     fun provideRealTimeDb(): FirebaseDatabase {
-        return FirebaseDatabase.getInstance(FirebaseConstants.FIREBASE_DB_URL)
+        return FirebaseDatabase.getInstance(Constants.FIREBASE_DB_URL)
     }
 
     @Singleton
     @Provides
     fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(FirebaseConstants.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        return context.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE)
     }
 
     @Provides

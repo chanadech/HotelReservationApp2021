@@ -3,25 +3,21 @@ package com.example.dechproduct.hotelreservationapp.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-@Entity
-data class User (
+@Parcelize
+data class User(
 
-    @PrimaryKey(autoGenerate = true)
-    var userId: Int = -1,
+    var userId: String,
 
-    @ColumnInfo(name = "user_name")
     var userName: String,
 
-    @ColumnInfo(name = "display_name")
     var userDisplayName: String,
 
-    @ColumnInfo(name = "pass_text")
-    var password: String,
+    var password: String = "",
 
-    @ColumnInfo(name = "user_type")
-    var userType: Int,
+    var userType: Int = 0,
 
-    @ColumnInfo(name = "room_id")
-    var roomID: String){
+    var roomID: String = "") : Parcelable {
 }

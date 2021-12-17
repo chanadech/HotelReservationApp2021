@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978900891328",
+    "project_id": "nestling-pholder-user-db",
+    "storage_bucket": "nestling-pholder-user-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978900891328:android:6b253d61f47c51126e5f25",
+        "android_client_info": {
+          "package_name": "com.example.dechproduct.hotelreservationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978900891328-vfju9odgvbh72012mdifunken2hlhiqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0ufJ2m8-2nsPXJedwW0NBD14rHGnofhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978900891328-vfju9odgvbh72012mdifunken2hlhiqh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

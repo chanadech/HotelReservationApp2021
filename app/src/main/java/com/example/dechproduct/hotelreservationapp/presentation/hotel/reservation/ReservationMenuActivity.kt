@@ -1,17 +1,26 @@
-package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_menu
+package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivityReservationMenuBinding
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.menu.MenuActivity2
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.menu.MenuActivity
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_add.AddReservationActivity
 import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_search.SearchReservationActivity
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.util.Constants
+import javax.inject.Inject
 
 class ReservationMenuActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityReservationMenuBinding
+
+    @Inject
+    lateinit var sharedPreferences:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +30,7 @@ class ReservationMenuActivity : AppCompatActivity() {
         )
 
         binding.btnBackMenu.setOnClickListener{
-            val intent = Intent(this, MenuActivity2::class.java)
+            val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }
         binding.cardView4.setOnClickListener{
@@ -33,6 +42,12 @@ class ReservationMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        updateLoginName()
+    }
 
+    private fun updateLoginName() {
+        sharedPreferences = applicationContext.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        val displayName = findViewById<TextView>(R.id.textView5)
+        displayName.text = sharedPreferences.getString(Constants.LOGGED_IN_DISPLAY_NAME, null).toString()
     }
 }

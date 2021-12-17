@@ -3,13 +3,11 @@ package com.example.dechproduct.hotelreservationapp.presentation.hotel.reservati
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivityAddReservationBinding
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.login.LoginActivity
-import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.reservation_menu.ReservationMenuActivity
+import com.example.dechproduct.hotelreservationapp.presentation.hotel.reservation.ReservationMenuActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.*

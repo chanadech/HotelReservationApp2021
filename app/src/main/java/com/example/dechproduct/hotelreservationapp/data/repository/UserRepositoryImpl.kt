@@ -21,16 +21,15 @@ class UserRepositoryImpl @Inject constructor(
 
             //TODO: Possible replace with query
             if(userNode.child(Constants.USER_KEY_PASSWORD).value.toString() == password){
-                val id = userNode.child(Constants.USER_KEY_ID).value.toString()
-                val username = userNode.child(Constants.USER_KEY_USERNAME).value.toString()
-                val name = userNode.child(Constants.USER_KEY_NAME).value.toString()
+                val userID = userNode.child(Constants.USER_KEY_ID).value.toString()
+                val userName = userNode.child(Constants.USER_KEY_USERNAME).value.toString()
+                val userDisplayName = userNode.child(Constants.USER_KEY_NAME).value.toString()
 
                 Log.d("UserRepositoryImpl","Authentication Success.")
-                Resource.Success(User(id, username, name))
+                Resource.Success(User(userID, userName, userDisplayName))
             }
             else
                 throw Exception("Authentication Failed.")
-            //Log.d("UserRepositoryImpl",id + username + name + password)
         }
 
         catch (exception: Exception) {

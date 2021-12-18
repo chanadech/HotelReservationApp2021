@@ -11,9 +11,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.dechproduct.hotelreservationapp.data.model.APIResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.dechproduct.hotelreservationapp.data.util.Resource
-import com.example.dechproduct.hotelreservationapp.domain.usecase.unuse.GetNewHeadlinesUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.unuse.GetSearchedNewsUseCase
+import com.example.dechproduct.hotelreservationapp.util.NewsResource
+import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetNewHeadlinesUseCase
+import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetSearchedNewsUseCase
 import java.lang.Exception
 
 class SearchReservationViewModel(
@@ -23,19 +23,19 @@ class SearchReservationViewModel(
     private val getSearchedNewsUseCase: GetSearchedNewsUseCase
 ) : AndroidViewModel(app) {
 
-    val newsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    val newsHeadlines: MutableLiveData<NewsResource<APIResponse>> = MutableLiveData()
 
     fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
-        newsHeadlines.postValue(Resource.Loading())
+        newsHeadlines.postValue(NewsResource.Loading())
         try {
             if (isInternetAvailable(app)) {
                 val apiResult = getNewHeadlinesUseCase.execute(country, page)
                 newsHeadlines.postValue(apiResult)
             } else {
-                newsHeadlines.postValue(Resource.Error("Internet is not available"))
+                newsHeadlines.postValue(NewsResource.Error("Internet is not available"))
             }
         } catch (e: Exception) {
-            newsHeadlines.postValue(Resource.Error(e.message.toString()))
+            newsHeadlines.postValue(NewsResource.Error(e.message.toString()))
         }
 
 
@@ -71,14 +71,14 @@ class SearchReservationViewModel(
     }
 
     //search
-    val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    val searchedNews: MutableLiveData<NewsResource<APIResponse>> = MutableLiveData()
 
     fun searchNews(
         country: String,
         searchedQuery: String,
         page: Int
     ) = viewModelScope.launch {      //use network bg for coroutine
-        searchedNews.postValue(Resource.Loading())
+        searchedNews.postValue(NewsResource.Loading())
 
         try {
             if (isInternetAvailable(app)) { //get search resukt using use case insatnce
@@ -89,12 +89,12 @@ class SearchReservationViewModel(
                 )
                 searchedNews.postValue(response)
             } else {
-                searchedNews.postValue(Resource.Error("No Interner Connection"))
+                searchedNews.postValue(NewsResource.Error("No Interner Connection"))
             }
         } catch (
             e: Exception
         ) {
-            searchedNews.postValue(Resource.Error(e.message.toString()))
+            searchedNews.postValue(NewsResource.Error(e.message.toString()))
         }
     }
 }

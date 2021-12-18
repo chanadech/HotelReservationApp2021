@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp
+package com.example.dechproduct.hotelreservationapp.unused
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.navigation.fragment.navArgs
+import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.FragmentInfoBinding
 
 class InfoFragment : Fragment() {

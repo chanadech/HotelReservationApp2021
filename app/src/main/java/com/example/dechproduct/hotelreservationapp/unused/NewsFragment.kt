@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp
+package com.example.dechproduct.hotelreservationapp.unused
 
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +12,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dechproduct.hotelreservationapp.data.util.Resource
+import com.example.dechproduct.hotelreservationapp.R
+import com.example.dechproduct.hotelreservationapp.util.NewsResource
 import com.example.dechproduct.hotelreservationapp.databinding.FragmentNewsBinding
 import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationActivity
 import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationViewModel
@@ -143,7 +144,7 @@ class NewsFragment : Fragment() {
         viewModel.getNewsHeadLines(country,page)
         viewModel.newsHeadlines.observe(viewLifecycleOwner,{response->
             when(response){
-                is Resource.Success->{
+                is NewsResource.Success->{
 
                     hideProgressBar()
                     response.data?.let {
@@ -158,14 +159,14 @@ class NewsFragment : Fragment() {
 
                         }
                 }
-                is Resource.Error->{
+                is NewsResource.Error->{
                     hideProgressBar()
                     response.message?.let {
                         Toast.makeText(activity,"An error occurred : $it", Toast.LENGTH_LONG).show()
                     }
                 }
 
-                is Resource.Loading->{
+                is NewsResource.Loading->{
                     showProgressBar()
                 }
 
@@ -262,7 +263,7 @@ class NewsFragment : Fragment() {
         if(view != null){
         viewModel.searchedNews.observe(viewLifecycleOwner,{ response->
             when(response){
-                is Resource.Success->{
+                is NewsResource.Success->{
 
                     hideProgressBar()
                     response.data?.let {
@@ -277,13 +278,13 @@ class NewsFragment : Fragment() {
 
                     }
                 }
-                is Resource.Error->{
+                is NewsResource.Error->{
                     hideProgressBar()
                     response.message?.let {
                         Toast.makeText(activity,"An error occurred : $it", Toast.LENGTH_LONG).show()
                     }
                 }
-                is Resource.Loading->{
+                is NewsResource.Loading->{
                     showProgressBar()
                 }
 

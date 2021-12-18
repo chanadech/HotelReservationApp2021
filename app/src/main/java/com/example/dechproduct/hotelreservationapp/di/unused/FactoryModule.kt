@@ -1,8 +1,8 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.di
+package com.example.dechproduct.hotelreservationapp.di.unused
 
 import android.app.Application
-import com.example.dechproduct.hotelreservationapp.domain.usecase.unuse.GetNewHeadlinesUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.unuse.GetSearchedNewsUseCase
+import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetNewHeadlinesUseCase
+import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetSearchedNewsUseCase
 import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationViewModelFactory
 import dagger.Module
 import dagger.Provides

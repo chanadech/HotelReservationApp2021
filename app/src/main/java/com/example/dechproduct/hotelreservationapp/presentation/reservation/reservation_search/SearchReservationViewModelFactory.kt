@@ -3,8 +3,8 @@ package com.example.dechproduct.hotelreservationapp.presentation.reservation.res
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.dechproduct.hotelreservationapp.domain.usecase.unuse.GetNewHeadlinesUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.unuse.GetSearchedNewsUseCase
+import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetNewHeadlinesUseCase
+import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetSearchedNewsUseCase
 
 class SearchReservationViewModelFactory(
     private val app: Application,

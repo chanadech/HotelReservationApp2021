@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.di
+package com.example.dechproduct.hotelreservationapp.di.unused
 
 import com.example.dechproduct.hotelreservationapp.data.api.NewsAPIService
 import com.example.dechproduct.hotelreservationapp.data.repository.dataSource.NewsRemoteDataSource

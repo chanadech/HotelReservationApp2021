@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.di
+package com.example.dechproduct.hotelreservationapp.di.unused
 
 import com.example.dechproduct.hotelreservationapp.data.repository.NewsRepositoryImpl
 import com.example.dechproduct.hotelreservationapp.data.repository.dataSource.NewsRemoteDataSource
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class RepositoryModule {
+class NewsRepositoryModule {
 
     @Singleton
     @Provides

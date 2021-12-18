@@ -1,7 +1,7 @@
-package com.example.dechproduct.hotelreservationapp.domain.usecase.unuse
+package com.example.dechproduct.hotelreservationapp.domain.usecase.unused
 
 import com.example.dechproduct.hotelreservationapp.data.model.APIResponse
-import com.example.dechproduct.hotelreservationapp.data.util.Resource
+import com.example.dechproduct.hotelreservationapp.util.NewsResource
 import com.example.dechproduct.hotelreservationapp.domain.repository.NewsRepository
 
 // ตย Use case สำหรับ get Data จาก api
@@ -9,7 +9,7 @@ import com.example.dechproduct.hotelreservationapp.domain.repository.NewsReposit
 
 class GetNewHeadlinesUseCase(private val newsRepository: NewsRepository) {
 
-    suspend fun execute(country : String, page : Int): Resource<APIResponse>{
+    suspend fun execute(country : String, page : Int): NewsResource<APIResponse> {
         return newsRepository.getNewsHeadlines(country,page)
     }
 }

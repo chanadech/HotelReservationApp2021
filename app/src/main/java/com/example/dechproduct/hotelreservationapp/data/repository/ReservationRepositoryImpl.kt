@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class ReserveRepositoryImpl @Inject constructor(
+class ReservationRepositoryImpl @Inject constructor(
     private val firebaseDatabase: FirebaseDatabase,
     val sharedPreferences: SharedPreferences): ReservationRepository {
 

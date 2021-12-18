@@ -3,7 +3,7 @@ package com.example.dechproduct.hotelreservationapp.data.repository
 import com.example.dechproduct.hotelreservationapp.data.model.APIResponse
 import com.example.dechproduct.hotelreservationapp.data.model.Article
 import com.example.dechproduct.hotelreservationapp.data.repository.dataSource.NewsRemoteDataSource
-import com.example.dechproduct.hotelreservationapp.data.util.Resource
+import com.example.dechproduct.hotelreservationapp.util.NewsResource
 import com.example.dechproduct.hotelreservationapp.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
@@ -46,7 +46,7 @@ import retrofit2.Response
 class NewsRepositoryImpl(
     private val newsRemoteDataSource: NewsRemoteDataSource
 ):NewsRepository {
-    override suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse> {
+    override suspend fun getNewsHeadlines(country : String, page : Int): NewsResource<APIResponse> {
         return responseToResource(newsRemoteDataSource.getTopHeadlines(country,page))
     }
 
@@ -54,19 +54,19 @@ class NewsRepositoryImpl(
         country: String,
         searchQuery: String,
         page: Int
-    ): Resource<APIResponse> {
+    ): NewsResource<APIResponse> {
         return responseToResource(
             newsRemoteDataSource.getSearchedNews(country, searchQuery, page) //อันนี้ return response instance แต่ว่าเราต้องการมี resource instance with state of result เราเลยใช้ responseToResource
         )
     }
 
-    private fun responseToResource(response:Response<APIResponse>):Resource<APIResponse>{
+    private fun responseToResource(response:Response<APIResponse>): NewsResource<APIResponse> {
         if(response.isSuccessful){
             response.body()?.let {result->
-                return Resource.Success(result)
+                return NewsResource.Success(result)
             }
         }
-        return Resource.Error(response.message())
+        return NewsResource.Error(response.message())
     }
 
 

@@ -1,11 +1,10 @@
 package com.example.dechproduct.hotelreservationapp.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.example.dechproduct.hotelreservationapp.data.model.APIResponse
 import com.example.dechproduct.hotelreservationapp.data.model.Article
-import com.example.dechproduct.hotelreservationapp.data.util.Resource
+import com.example.dechproduct.hotelreservationapp.util.NewsResource
 import kotlinx.coroutines.flow.Flow
-import java.time.temporal.TemporalQuery
+
 //
 //interface NewsRepository {
 //
@@ -37,8 +36,8 @@ import java.time.temporal.TemporalQuery
 
 interface NewsRepository{
 
-    suspend fun getNewsHeadlines(country : String, page : Int): Resource<APIResponse>
-    suspend fun getSearchedNews(country: String,searchQuery:String, page: Int) : Resource<APIResponse>
+    suspend fun getNewsHeadlines(country : String, page : Int): NewsResource<APIResponse>
+    suspend fun getSearchedNews(country: String,searchQuery:String, page: Int) : NewsResource<APIResponse>
     suspend fun saveNews(article: Article)
     suspend fun deleteNews(article: Article)
     fun getSavedNews(): Flow<List<Article>>

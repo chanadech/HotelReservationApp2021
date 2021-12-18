@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.domain.usecase.unuse
+package com.example.dechproduct.hotelreservationapp.domain.usecase.unused
 
 import com.example.dechproduct.hotelreservationapp.data.model.Article
 import com.example.dechproduct.hotelreservationapp.domain.repository.NewsRepository

@@ -17,32 +17,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object LoginModule {
-
+object UseCaseModule {
     @Provides
     @Singleton
-    fun provideRealTimeDb(): FirebaseDatabase {
-        return FirebaseDatabase.getInstance(Constants.FIREBASE_DB_URL)
-    }
-
-    @Singleton
-    @Provides
-    fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE)
-    }
-
-    @Provides
-    @Singleton
-    fun provideUserRepo(
-        databaseReference: FirebaseDatabase,
-        sharedPreferences: SharedPreferences,
-    ): UserRepository {
-        return UserRepositoryImpl(databaseReference, sharedPreferences)
-    }
-
-    @Provides
-    @Singleton
-    fun provideUseCases(userRepository: UserRepository): UseCase {
+    fun provideUseCase(userRepository: UserRepository): UseCase {
         return UseCase(
             LoginUseCase(userRepository),
         )

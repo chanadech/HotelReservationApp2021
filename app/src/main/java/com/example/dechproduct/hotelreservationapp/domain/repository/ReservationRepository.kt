@@ -7,7 +7,5 @@ interface ReservationRepository {
     suspend fun addReservation(reservation:Reservation):Resource<Reservation>
     suspend fun editReservation(reservation:Reservation):Resource<Reservation>
     suspend fun removeReservation(reservation: Reservation):Resource<Reservation>
-    suspend fun searchReservationByFName(firstName:String):Resource<Reservation>
-    suspend fun searchReservationByLName(lastName:String):Resource<Reservation>
-    suspend fun searchReservationByPhone(phoneNo:String):Resource<Reservation>
+    suspend fun searchReservation(reservation: Reservation):Resource<Reservation>
 }

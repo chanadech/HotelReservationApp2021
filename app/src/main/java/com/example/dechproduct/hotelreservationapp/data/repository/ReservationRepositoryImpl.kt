@@ -30,6 +30,15 @@ class ReservationRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun searchReservation(reservation: Reservation):Resource<Reservation>{
+        return try{
+            Resource.Success(Reservation())
+        }
+        catch (exception: Exception){
+            Resource.Failure(exception)
+        }
+    }
+
     override suspend fun editReservation(reservation: Reservation):Resource<Reservation>{
         return try{
             Resource.Success(Reservation())
@@ -48,30 +57,4 @@ class ReservationRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun searchReservationByFName(firstName:String):Resource<Reservation>{
-        return try{
-            Resource.Success(Reservation())
-        }
-        catch (exception: Exception){
-            Resource.Failure(exception)
-        }
-    }
-
-    override suspend fun searchReservationByLName(lastName:String):Resource<Reservation>{
-        return try{
-            Resource.Success(Reservation())
-        }
-        catch (exception: Exception){
-            Resource.Failure(exception)
-        }
-    }
-
-    override suspend fun searchReservationByPhone(phoneNo:String):Resource<Reservation>{
-        return try{
-            Resource.Success(Reservation())
-        }
-        catch (exception: Exception){
-            Resource.Failure(exception)
-        }
-    }
 }

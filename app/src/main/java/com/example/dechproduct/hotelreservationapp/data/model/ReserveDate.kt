@@ -1,5 +1,5 @@
 package com.example.dechproduct.hotelreservationapp.data.model
 
-class ReserveDate {
+data class ReserveDate (var foo: String){
     /*Some Date Object*/
 }

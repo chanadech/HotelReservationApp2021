@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.menu
+package com.example.dechproduct.hotelreservationapp.presentation.menu.unused
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

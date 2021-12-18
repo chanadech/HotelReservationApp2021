@@ -1,6 +1,19 @@
 package com.example.dechproduct.hotelreservationapp.util
 
 object Constants {
+    //Room Model
+    const val ROOM_TYP_STANDARD = "standard"
+    const val ROOM_TYP_DELUXE = "deluxe"
+    const val ROOM_TYP_SUITE = "suite"
+
+    const val ROOM_BED_SINGLE = "single"
+    const val ROOM_BED_DOUBLE = "twin"
+
+    const val ROOM_LOC_NORMAL = "standard"
+    const val ROOM_LOC_CORNER = "corner"
+
+    const val ROOM_MAX_CAPACITY = 2
+
     //Database
     const val FIREBASE_DB_URL =
         "https://nestling-pholder-user-db-default-rtdb.asia-southeast1.firebasedatabase.app/"

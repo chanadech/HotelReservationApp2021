@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_add
+package com.example.dechproduct.hotelreservationapp.presentation.reservation.add
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

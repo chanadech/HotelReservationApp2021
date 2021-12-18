@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivityReservationMenuBinding
 import com.example.dechproduct.hotelreservationapp.presentation.menu.MenuActivity
-import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_add.AddReservationActivity
-import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationActivity
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.add.AddReservationActivity
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.search.SearchReservationActivity
 import com.example.dechproduct.hotelreservationapp.util.Constants
 import javax.inject.Inject
 

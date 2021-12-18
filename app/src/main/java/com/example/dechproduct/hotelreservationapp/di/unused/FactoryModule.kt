@@ -3,7 +3,7 @@ package com.example.dechproduct.hotelreservationapp.di.unused
 import android.app.Application
 import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetNewHeadlinesUseCase
 import com.example.dechproduct.hotelreservationapp.domain.usecase.unused.GetSearchedNewsUseCase
-import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.SearchReservationViewModelFactory
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.search.SearchReservationViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

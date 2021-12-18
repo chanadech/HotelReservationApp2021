@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search
+package com.example.dechproduct.hotelreservationapp.presentation.reservation.search
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

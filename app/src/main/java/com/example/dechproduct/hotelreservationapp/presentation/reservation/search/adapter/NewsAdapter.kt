@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.adapter
+package com.example.dechproduct.hotelreservationapp.presentation.reservation.search.adapter
 
 import android.util.Log
 import android.view.LayoutInflater

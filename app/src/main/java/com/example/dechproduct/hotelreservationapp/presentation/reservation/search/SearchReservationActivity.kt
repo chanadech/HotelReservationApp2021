@@ -1,4 +1,4 @@
-package com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search
+package com.example.dechproduct.hotelreservationapp.presentation.reservation.search
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.dechproduct.hotelreservationapp.R
 import com.example.dechproduct.hotelreservationapp.databinding.ActivitySearchReservationactivityBinding
 import com.example.dechproduct.hotelreservationapp.presentation.reservation.ReservationMenuActivity
-import com.example.dechproduct.hotelreservationapp.presentation.reservation.reservation_search.adapter.NewsAdapter
+import com.example.dechproduct.hotelreservationapp.presentation.reservation.search.adapter.NewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

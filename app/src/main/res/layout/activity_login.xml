@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.login.LoginActivity">
+        tools:context=".presentation.hotel.login.LoginActivity">
 
 
         <TextView
@@ -16,10 +16,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/cinzeldecorative_bold"
+            android:fontFamily="@font/bodoniflf_bold"
             android:text="Hotel Management"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/cinzeldecorative_regular"
-            android:text="name of the resort"
+            android:fontFamily="@font/bodoniflf_roman"
+            android:text="Villa De Kestral"
             android:textColor="@color/colorText"
             android:textSize="32px"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/hotel_2"
+            android:background="@drawable/villa_de_kestrel_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -58,7 +58,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_txt_username"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/bodoniflf_roman"
             android:hint="Username"
             android:paddingLeft="60dp"
             android:textColor="@color/colorText"
@@ -74,7 +74,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_txt_password"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/bodoniflf_roman"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="60dp"
@@ -85,12 +85,12 @@
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
 
-        <ImageButton
+        <Button
             android:id="@+id/btSignIn"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_btn_login"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/bodoniflf_roman"
             android:text="Sign in"
             android:textColor="@color/colorText"
             android:textSize="48px"

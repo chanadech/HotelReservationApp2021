@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_assignment_ind_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_baseline_bedroom_parent_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_baseline_beenhere_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_baseline_contact_phone_24.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_bottom_welcome.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_illustration_welcome.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/ic_launcher_hotel_background.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.4197916666666667" />
+        <entry key="app/src/main/res/layout/activity_add_reservation.xml" value="0.41139680333564976" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.40729166666666666" />
+        <entry key="app/src/main/res/layout/activity_menu2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_reservation_menu.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/activity_search_reservationactivity.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/fragment_news.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/news_list_item.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_hotel.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_hotel_round.xml" value="0.24635416666666668" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

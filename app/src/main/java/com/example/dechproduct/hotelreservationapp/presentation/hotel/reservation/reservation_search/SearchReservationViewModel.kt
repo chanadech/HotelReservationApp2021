@@ -14,42 +14,38 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.dechproduct.hotelreservationapp.data.util.Resource
 import com.example.dechproduct.hotelreservationapp.domain.usecase.GetNewHeadlinesUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.GetSearchedNewsUseCase
 import java.lang.Exception
-import java.security.PrivateKey
 
 class SearchReservationViewModel(
 
     private val app: Application,
-    private val getNewHeadlinesUseCase: GetNewHeadlinesUseCase,
-    private val getSearchedNewsUseCase: GetSearchedNewsUseCase
+    private val getNewHeadlinesUseCase: GetNewHeadlinesUseCase
 ) : AndroidViewModel(app) {
 
-    val newsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    val newsHeadlines : MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
-    fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
+    fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch (Dispatchers.IO) {
         newsHeadlines.postValue(Resource.Loading())
-        try {
-            if (isInternetAvailable(app)) {
+        try{
+            if(isInternetAvailable(app)){
                 val apiResult = getNewHeadlinesUseCase.execute(country, page)
                 newsHeadlines.postValue(apiResult)
-            } else {
+            }else{
                 newsHeadlines.postValue(Resource.Error("Internet is not available"))
             }
-        } catch (e: Exception) {
-            newsHeadlines.postValue(Resource.Error(e.message.toString()))
+            }catch (e:Exception){
+                newsHeadlines.postValue(Resource.Error(e.message.toString()))
         }
+
 
 
     }
 
-    private fun isInternetAvailable(context: Context): Boolean {
+    private fun  isInternetAvailable(context: Context): Boolean{
         if (context == null) return false
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             if (capabilities != null) {
                 when {
                     capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
@@ -70,33 +66,5 @@ class SearchReservationViewModel(
             }
         }
         return false
-    }
-
-    //search
-    val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
-
-    fun searchNews(
-        country: String,
-        searchedQuery: String,
-        page: Int
-    ) = viewModelScope.launch {      //use network bg for coroutine
-        searchedNews.postValue(Resource.Loading())
-
-        try {
-            if (isInternetAvailable(app)) { //get search resukt using use case insatnce
-                val response = getSearchedNewsUseCase.execute(
-                    country,
-                    searchedQuery,
-                    page
-                )
-                searchedNews.postValue(response)
-            } else {
-                searchedNews.postValue(Resource.Error("No Interner Connection"))
-            }
-        } catch (
-            e: Exception
-        ) {
-            searchedNews.postValue(Resource.Error(e.message.toString()))
-        }
     }
 }

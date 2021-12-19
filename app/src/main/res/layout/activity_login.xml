@@ -40,7 +40,7 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="869px"
+            android:layout_width="750px"
             android:layout_height="710px"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
@@ -93,6 +93,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_btn_login"
+            android:foreground="@drawable/bg_btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.951"
             app:layout_constraintStart_toStartOf="parent"

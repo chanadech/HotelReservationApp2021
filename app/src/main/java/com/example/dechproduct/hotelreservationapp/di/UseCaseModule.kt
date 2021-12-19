@@ -4,10 +4,7 @@ import com.example.dechproduct.hotelreservationapp.domain.repository.Reservation
 import com.example.dechproduct.hotelreservationapp.domain.repository.UserRepository
 import com.example.dechproduct.hotelreservationapp.domain.usecase.UseCase
 import com.example.dechproduct.hotelreservationapp.domain.usecase.login.LoginUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.reservation.AddReserveUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.reservation.EditReserveUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.reservation.RemoveReserveUseCase
-import com.example.dechproduct.hotelreservationapp.domain.usecase.reservation.SearchReserveUseCase
+import com.example.dechproduct.hotelreservationapp.domain.usecase.reservation.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,6 +24,7 @@ object UseCaseModule {
 
             AddReserveUseCase(reservationRepository),
             SearchReserveUseCase(reservationRepository),
+            PopulateReserveUseCase(reservationRepository),
             EditReserveUseCase(reservationRepository),
             RemoveReserveUseCase(reservationRepository),
         )

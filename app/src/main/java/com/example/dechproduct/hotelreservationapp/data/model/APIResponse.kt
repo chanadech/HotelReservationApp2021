@@ -4,10 +4,10 @@ package com.example.dechproduct.hotelreservationapp.data.model
 import com.google.gson.annotations.SerializedName
 
 data class APIResponse(
-    @SerializedName("articles")
-    val articles: List<Article>,
-    @SerializedName("status")
+    @SerializedName("Foo1")
+    val articles: List<String>,
+    @SerializedName("Foo2")
     val status: String,
-    @SerializedName("totalResults")
+    @SerializedName("Foo3")
     val totalResults: Int
 )

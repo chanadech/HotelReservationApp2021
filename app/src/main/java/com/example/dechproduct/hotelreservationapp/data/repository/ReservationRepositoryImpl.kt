@@ -6,11 +6,13 @@ import com.example.dechproduct.hotelreservationapp.data.model.Reservation
 import com.example.dechproduct.hotelreservationapp.domain.repository.ReservationRepository
 import com.example.dechproduct.hotelreservationapp.util.Constants
 import com.example.dechproduct.hotelreservationapp.util.Resource
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
-import java.time.Instant
 import javax.inject.Inject
 
 class ReservationRepositoryImpl @Inject constructor(
@@ -40,8 +42,36 @@ class ReservationRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun searchReservation(reservation: Reservation):Resource<Reservation>{
+    override suspend fun searchReservation(keyword: String):Resource<Reservation>{
         return try{
+            val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE)
+            bookingNode.get().addOnSuccessListener {
+
+            }
+
+            Resource.Success(Reservation())
+        }
+        catch (exception: Exception){
+            Resource.Failure(exception)
+        }
+    }
+
+    override suspend fun populateReservation():Resource<Reservation>{
+        return try{
+            val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE)
+
+            val postListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val reserve = dataSnapshot.getValue(Reservation::class.java)
+
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.w("ReserveRepositoryImpl",
+                        "loadPost:onCancelled", databaseError.toException())
+                }
+            }
+            bookingNode.addValueEventListener(postListener)
+
             Resource.Success(Reservation())
         }
         catch (exception: Exception){

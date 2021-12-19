@@ -66,7 +66,6 @@ class LoginActivity : AppCompatActivity() {
                             .putString(Constants.LOGGED_IN_DISPLAY_NAME, user.userDisplayName).apply()
 
                         val intent = Intent(this@LoginActivity, MenuActivity::class.java )
-                        intent.putExtra("displayName", user.userDisplayName)
                         startActivity(intent)
                     }
                 }

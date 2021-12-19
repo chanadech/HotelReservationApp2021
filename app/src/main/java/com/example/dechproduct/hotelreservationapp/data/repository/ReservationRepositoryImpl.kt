@@ -7,7 +7,10 @@ import com.example.dechproduct.hotelreservationapp.domain.repository.Reservation
 import com.example.dechproduct.hotelreservationapp.util.Constants
 import com.example.dechproduct.hotelreservationapp.util.Resource
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import java.time.Instant
 import javax.inject.Inject
 
 class ReservationRepositoryImpl @Inject constructor(
@@ -16,16 +19,23 @@ class ReservationRepositoryImpl @Inject constructor(
 
     override suspend fun addReservation(reservation: Reservation):Resource<Reservation>{
         return try {
-            //TODO: Edit placeholder
-            val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE).child("placeholder").get().await()
-            val firstName = bookingNode.child(Constants.BOOK_KEY_FNAME).value.toString()
-            val lastName = bookingNode.child(Constants.BOOK_KEY_LNAME).value.toString()
+            //TODO: Migrate Database
+            val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE)
+            val uid = System.currentTimeMillis()
 
-            Resource.Success(Reservation(firstName = firstName, lastName = lastName))
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_FNAME).setValue(reservation.firstName)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_LNAME).setValue(reservation.lastName)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_PHONE).setValue(reservation.phoneNumber)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_PAYMENT).setValue(reservation.paymentType)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_SSN).setValue(reservation.ssnID)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_DATE).setValue(reservation.reserveDate)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_ADDRESS).setValue(reservation.address)
+
+            Resource.Success(reservation)
         }
 
         catch (exception: Exception) {
-            Log.d("UserRepositoryImpl",exception.toString())
+            Log.d("ReserveRepositoryImpl",exception.toString())
             Resource.Failure(exception)
         }
     }

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable/splash_background.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_add_reservation.xml" value="0.3333333333333333" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_menu.xml" value="0.16530797101449277" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_menu2.xml" value="0.16530797101449277" />

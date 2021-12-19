@@ -17,7 +17,8 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun login(username: String, password: String):Resource<User> {
 
         return try {
-            val userNode = firebaseDatabase.getReference(Constants.USER_DB_NODE).child(username).get().await()
+            val userNode =
+                firebaseDatabase.getReference(Constants.USER_DB_NODE).child(username).get().await()
 
             //TODO: Possible replace with query
             if(userNode.child(Constants.USER_KEY_PASSWORD).value.toString() == password){

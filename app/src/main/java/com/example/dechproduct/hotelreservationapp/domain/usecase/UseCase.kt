@@ -9,8 +9,8 @@ import com.example.dechproduct.hotelreservationapp.domain.usecase.reservation.Se
 class UseCase(
     var loginUseCase: LoginUseCase,
 
-    var AddReserveUseCase: AddReserveUseCase,
-    var SearchReserveUseCase: SearchReserveUseCase,
-    var EditReserveUseCase: EditReserveUseCase,
-    var RemoveReserveUseCase: RemoveReserveUseCase,
+    var addReserveUseCase: AddReserveUseCase,
+    var searchReserveUseCase: SearchReserveUseCase,
+    var editReserveUseCase: EditReserveUseCase,
+    var removeReserveUseCase: RemoveReserveUseCase,
     ){}

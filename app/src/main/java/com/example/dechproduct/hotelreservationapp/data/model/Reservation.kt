@@ -29,7 +29,7 @@ data class Reservation (
     var ssnID: String = "",
 
     //TODO: Implements Address object
-    var Address: String = ""
+    var address: String = ""
 
     ) : Parcelable {
 }

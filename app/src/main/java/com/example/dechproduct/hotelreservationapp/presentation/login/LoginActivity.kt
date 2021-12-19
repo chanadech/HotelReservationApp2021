@@ -49,8 +49,22 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.tvSignIn.setOnClickListener{
-            val intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
+            val userInput = findViewById<EditText>(R.id.editText)
+            val pwdInput = findViewById<EditText>(R.id.editText2)
+
+            var username: String = userInput.text.toString()
+            var password: String = pwdInput.text.toString()
+
+            if (username.isNotEmpty() and password.isNotEmpty()) {
+                lifecycleScope.launch{
+                    loginViewModel.loginUser(username, password)
+                }
+            }
+            else {
+                Toast.makeText(applicationContext,"Insufficient Information.", Toast.LENGTH_SHORT).show()
+            }
+            //val intent = Intent(this, MenuActivity::class.java)
+            //startActivity(intent)
         }
         observeLogin()
     }

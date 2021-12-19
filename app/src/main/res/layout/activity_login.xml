@@ -85,7 +85,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
 
-        <Button
+        <ImageButton
             android:id="@+id/btSignIn"
             android:layout_width="86dp"
             android:layout_height="86dp"

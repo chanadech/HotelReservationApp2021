@@ -9,6 +9,33 @@
     android:orientation="vertical"
     tools:context=".presentation.reservation.search.SearchReservationActivity">
 
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/cinzeldecorative_bold"
+        android:gravity="center"
+        android:text="Search Reservation"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reservationList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,20 +61,6 @@
                 android:src="@drawable/icon_arrow_backward" />
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/cinzeldecorative_bold"
-            android:gravity="center"
-            android:text="Search Reservation"
-            android:textSize="20sp"
-            android:layout_marginTop="35dp"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="@id/toolbar"
-            app:layout_constraintStart_toStartOf="@id/toolbar"
-            app:layout_constraintTop_toTopOf="@id/toolbar" />
     </LinearLayout>
 
 
@@ -57,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
+        android:visibility="gone"
         app:defaultNavHost="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -64,6 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:visibility="gone"
         app:menu="@menu/bottom_menu" />
 
 

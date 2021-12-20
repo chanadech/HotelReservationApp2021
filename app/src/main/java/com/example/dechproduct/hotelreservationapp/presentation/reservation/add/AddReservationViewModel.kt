@@ -20,7 +20,8 @@ class AddReservationViewModel @Inject constructor(private val useCase: UseCase):
                            sta_date : String,end_date : String,address : String){
         viewModelScope.launch {
             val reservation = useCase.addReserveUseCase(
-                Reservation(firstName = fname, lastName = lname, phoneNumber = phone,
+                Reservation(
+                    firstName = fname, lastName = lname, phoneNumber = phone,
                 paymentType = payment, ssnID = id, reserveDate = "$sta_date:$end_date",
                     address = address
                 ))

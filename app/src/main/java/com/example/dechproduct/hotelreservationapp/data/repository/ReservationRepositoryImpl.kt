@@ -10,9 +10,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.tasks.await
+import com.google.firebase.database.ktx.getValue
 import javax.inject.Inject
 
 class ReservationRepositoryImpl @Inject constructor(
@@ -42,37 +40,58 @@ class ReservationRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun searchReservation(keyword: String):Resource<Reservation>{
+    override suspend fun searchReservation(keyword: String):Resource<MutableList<Reservation>>{
         return try{
             val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE)
-            bookingNode.get().addOnSuccessListener {
+            var result : MutableList<Reservation> = mutableListOf<Reservation>()
 
-            }
-
-            Resource.Success(Reservation())
+            bookingNode.orderByChild(Constants.BOOK_KEY_FNAME).equalTo(keyword)
+                .addValueEventListener(object : ValueEventListener{
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for(item in dataSnapshot.children) {
+                            var reservation: Reservation = Reservation(
+                                item.child(Constants.BOOK_KEY_ID).getValue (Int::class.java),
+                                item.child(Constants.BOOK_KEY_FNAME).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_LNAME).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_PHONE).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_PAYMENT).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_DATE).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_PASSPORT).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_SSN).getValue(String::class.java),
+                                item.child(Constants.BOOK_KEY_ADDRESS).getValue(String::class.java),
+                            )
+                            if (reservation != null) {
+                                /*
+                            Log.d("ReserveRepositoryImpl",
+                                "${node::class.simpleName}")
+                             */
+                                result.add(reservation)
+                            } else {
+                                Log.d("ReserveRepositoryImpl", "node is empty")
+                            }
+                        }
+                    }
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        Log.w("ReserveRepositoryImpl",
+                            "loadPost:onCancelled", databaseError.toException())
+                    }
+                })
+            Resource.Success(result)
         }
         catch (exception: Exception){
             Resource.Failure(exception)
         }
     }
 
-    override suspend fun populateReservation():Resource<Reservation>{
+    override suspend fun populateReservation():Resource<MutableList<Reservation>>{
         return try{
             val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE)
+            var result : MutableList<Reservation> = mutableListOf<Reservation>()
 
-            val postListener = object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val reserve = dataSnapshot.getValue(Reservation::class.java)
-
-                }
-                override fun onCancelled(databaseError: DatabaseError) {
-                    Log.w("ReserveRepositoryImpl",
-                        "loadPost:onCancelled", databaseError.toException())
-                }
+            bookingNode.get().addOnSuccessListener {
+                //Placeholder
             }
-            bookingNode.addValueEventListener(postListener)
-
-            Resource.Success(Reservation())
+            Resource.Success(result)
         }
         catch (exception: Exception){
             Resource.Failure(exception)

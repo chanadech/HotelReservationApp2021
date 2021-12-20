@@ -25,14 +25,14 @@ object Constants {
     const val USER_KEY_USERNAME = "username"
 
     const val BOOK_DB_NODE = "booking"
-    const val BOOK_KEY_FNAME = "first_name"
-    const val BOOK_KEY_LNAME = "last_name"
-    const val BOOK_KEY_ID = "id"
-    const val BOOK_KEY_PHONE = "phone_no"
-    const val BOOK_KEY_PAYMENT = "payment"
-    const val BOOK_KEY_DATE = "date"
-    const val BOOK_KEY_PASSPORT = "passport"
-    const val BOOK_KEY_SSN = "ssn"
+    const val BOOK_KEY_FNAME = "firstName"
+    const val BOOK_KEY_LNAME = "lastName"
+    const val BOOK_KEY_ID = "bookingID"
+    const val BOOK_KEY_PHONE = "phoneNumber"
+    const val BOOK_KEY_PAYMENT = "paymentType"
+    const val BOOK_KEY_DATE = "reserveDate"
+    const val BOOK_KEY_PASSPORT = "passportID"
+    const val BOOK_KEY_SSN = "ssnID"
     const val BOOK_KEY_ADDRESS = "address"
 
     //Persistent Data

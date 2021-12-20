@@ -13,14 +13,16 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchReservationViewModel @Inject constructor(private val useCase: UseCase): ViewModel(){
 
-    var reserver = MutableLiveData<Resource<Reservation>>()
+    var reserver = MutableLiveData<Resource<MutableList<Reservation>>>()
 
     suspend fun searchReserve(keyword:String){
         viewModelScope.launch {
+            //TODO:EDIT HERE
             val reservation = useCase.searchReserveUseCase(keyword)
             reserver.postValue(reservation)
         }
     }
+    //Only searchReserve() update observer for now.
 
     suspend fun populateReserve(){
         viewModelScope.launch {

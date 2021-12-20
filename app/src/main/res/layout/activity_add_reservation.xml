@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,6 +22,7 @@
             android:textColor="@color/colorGrey"
             android:layout_marginEnd="12dp"
             android:layout_margin="3dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/button_test"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
@@ -31,7 +38,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="12dp"
             app:customer_hint="Input Room ID"
-            app:customer_inputType="number"
+            app:customer_inputType="text"
             app:customer_isMandatory="true"
             app:customer_label="Room ID"
             app:customer_value=""
@@ -51,7 +58,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginRight="10dp"
             app:customer_hint="Customer ID number"
-            app:customer_inputType="number"
+            app:customer_inputType="text"
             app:customer_isMandatory="false"
             app:customer_label="Passport / ID Number"
             app:customer_value=""
@@ -275,7 +282,7 @@
             android:fontFamily="@font/bodoniflf_bold"
             android:gravity="center"
             android:text="Add Reservation"
-            android:textSize="34sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="@id/toolbar"
@@ -287,6 +294,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    </androidx.core.widget.NestedScrollView>
 
 
 </layout>

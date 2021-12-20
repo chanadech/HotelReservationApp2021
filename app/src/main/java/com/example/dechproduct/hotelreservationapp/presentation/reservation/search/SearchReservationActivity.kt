@@ -55,6 +55,10 @@ class SearchReservationActivity : AppCompatActivity() {
 
                 override fun onQueryTextChange(newText: String): Boolean {
                     //TODO: Add search here, optional.
+                    //Log.d("SearchResActivity",newText)
+                    lifecycleScope.launch{
+                        searchReservationViewModel.searchReserve(newText)
+                    }
                     return false
                 }
             })
@@ -67,12 +71,9 @@ class SearchReservationActivity : AppCompatActivity() {
             when (it) {
                 is Resource.Success -> {
                     it.data?.let { reservationList ->
-                        Toast.makeText(applicationContext, "Search Returned.",
-                            Toast.LENGTH_SHORT).show()
-                        Log.d("DEBU", reservationList.toString())
+                        Log.d("SearchResActivity",reservationList.toString())
                         findViewById<RecyclerView>(R.id.reservationList).adapter = ReservationsAdapter(reservationList)
                     }
-                    Log.d("SearchResActivity","Search Updated.")
                 }
 
                 is Resource.Failure -> {

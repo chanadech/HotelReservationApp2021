@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
-
+                
                 is Resource.Failure -> {
                     Toast.makeText(applicationContext, it.throwable.message, Toast.LENGTH_SHORT).show()
                 }

@@ -15,28 +15,37 @@ class UserRepositoryImpl @Inject constructor(
     val sharedPreferences: SharedPreferences): UserRepository{
 
     override suspend fun login(username: String, password: String):Resource<User> {
-
         return try {
-            val userNode =
-                firebaseDatabase.getReference(Constants.USER_DB_NODE).child(username).get().await()
+            val userNode = firebaseDatabase.reference.child(Constants.USER_DB_NODE)
+            var user: User = User("", "", "")
 
-            //TODO: Possible replace with query
-            if(userNode.child(Constants.USER_KEY_PASSWORD).value.toString() == password){
-                val userID = userNode.child(Constants.USER_KEY_ID).value.toString()
-                val userName = userNode.child(Constants.USER_KEY_USERNAME).value.toString()
-                val userDisplayName = userNode.child(Constants.USER_KEY_NAME).value.toString()
+            userNode.orderByChild(Constants.USER_KEY_USERNAME).equalTo(username).get()
+                .await().children.map { item ->
+                    if (item.child(Constants.USER_KEY_PASSWORD).getValue(String::class.java) == password)
+                    {
+                        user.userID =
+                            item.child(Constants.USER_KEY_ID).getValue(String::class.java)
+                        user.userName =
+                            item.child(Constants.USER_KEY_USERNAME).getValue(String::class.java)
+                        user.userDisplayName =
+                            item.child(Constants.USER_KEY_NAME).getValue(String::class.java)
+                        Log.d("UserRepositoryImpl", "Authentication Success.")
+                        Resource.Success(user)
+                    }
 
-                Log.d("UserRepositoryImpl","Authentication Success.")
-                Resource.Success(User(userID, userName, userDisplayName))
-            }
-            else
-                throw Exception("Authentication Failed.")
+                    else {
+                        throw Exception("Authentication Failed.")
+                    }
+                }
+            Log.d("UserRepositoryImpl", "Authentication Not really.")
+            Resource.Success(user)
         }
 
-        catch (exception: Exception) {
-            Log.d("UserRepositoryImpl",exception.toString())
+        catch(exception: Exception) {
+            Log.d("UserRepositoryImpl", exception.toString())
             Resource.Failure(exception)
         }
+
     }
 
 }

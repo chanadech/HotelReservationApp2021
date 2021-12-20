@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Reservation(
 
-    var bookingID: Int? = -1,
+    var bookingID: String? = "",
 
     var firstName: String? = "",
 
@@ -17,7 +17,9 @@ data class Reservation(
     var paymentType: String? = "",
 
     //TODO: Implements ReserveDate object
-    var reserveDate: String? = "",
+    var reserveDateIn: String? = "",
+
+    var reserveDateOut: String? = "",
 
     var passportID: String? = "",
 

@@ -31,10 +31,16 @@ class ReservationRepositoryImpl @Inject constructor(
                 .setValue(reservation.paymentType)
             bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_SSN)
                 .setValue(reservation.ssnID)
-            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_DATE)
-                .setValue(reservation.reserveDate)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_PASSPORT)
+                .setValue(reservation.passportID)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_DATE_IN)
+                .setValue(reservation.reserveDateIn)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_DATE_OUT)
+                .setValue(reservation.reserveDateOut)
             bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_ADDRESS)
                 .setValue(reservation.address)
+            bookingNode.child(uid.toString()).child(Constants.BOOK_KEY_ID)
+                .setValue(uid)
 
             Resource.Success(reservation)
         } catch (exception: Exception) {
@@ -53,12 +59,13 @@ class ReservationRepositoryImpl @Inject constructor(
             bookingNode.orderByChild(Constants.BOOK_KEY_FNAME).equalTo(keyword).
             get().await().children.map { item ->
                 var reservation: Reservation = Reservation(
-                    item.child(Constants.BOOK_KEY_ID).getValue(Int::class.java),
+                    item.child(Constants.BOOK_KEY_ID).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_FNAME).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_LNAME).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_PHONE).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_PAYMENT).getValue(String::class.java),
-                    item.child(Constants.BOOK_KEY_DATE).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_DATE_IN).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_DATE_OUT).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_PASSPORT).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_SSN).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_ADDRESS).getValue(String::class.java),

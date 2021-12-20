@@ -9,11 +9,11 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class User(
 
-    var userId: String,
+    var userID: String?,
 
-    var userName: String,
+    var userName: String?,
 
-    var userDisplayName: String,
+    var userDisplayName: String?,
 
     var password: String = "",
 

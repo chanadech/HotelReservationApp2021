@@ -16,16 +16,30 @@ class AddReservationViewModel @Inject constructor(private val useCase: UseCase):
     var reserver = MutableLiveData<Resource<Reservation>>()
 
     suspend fun addReserve(fname : String,lname  : String,phone : String,
-                           payment : String,id : String,
+                           payment : String, unidentified_id : String,
                            sta_date : String,end_date : String,address : String){
-        viewModelScope.launch {
-            val reservation = useCase.addReserveUseCase(
-                Reservation(
-                    firstName = fname, lastName = lname, phoneNumber = phone,
-                paymentType = payment, ssnID = id, reserveDate = "$sta_date:$end_date",
-                    address = address
-                ))
-            reserver.postValue(reservation)
+
+        if (unidentified_id.matches("\\d{13}".toRegex())){
+            viewModelScope.launch {
+                val reservation = useCase.addReserveUseCase(
+                    Reservation(
+                        firstName = fname, lastName = lname, phoneNumber = phone,
+                        paymentType = payment, ssnID = unidentified_id,
+                        reserveDateIn = sta_date, reserveDateOut = end_date, address = address
+                    ))
+                reserver.postValue(reservation)
+            }
+        }
+        else{
+            viewModelScope.launch {
+                val reservation = useCase.addReserveUseCase(
+                    Reservation(
+                        firstName = fname, lastName = lname, phoneNumber = phone,
+                        paymentType = payment, passportID = unidentified_id,
+                        reserveDateIn = sta_date, reserveDateOut = end_date, address = address
+                    ))
+                reserver.postValue(reservation)
+            }
         }
     }
 }

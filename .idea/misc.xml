@@ -3,20 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/activity_add_reservation.xml" value="0.45" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/activity_menu.xml" value="0.44635416666666666" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/activity_menu2.xml" value="0.44635416666666666" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/activity_reservation_menu.xml" value="0.45989583333333334" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/activity_search_reservationactivity.xml" value="0.44635416666666666" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/news_list_item.xml" value="0.45989583333333334" />
-        <entry key="..\:/KMITL SE/Year 4 Term 1/HotelReservationApp2021/app/src/main/res/layout/reservation_item.xml" value="0.45989583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable/ic_hotel_background.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1648148148148148" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable/icon_arrow_backward.xml" value="0.21614583333333334" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/drawable/splash_background.xml" value="0.21614583333333334" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_add_reservation.xml" value="0.3333333333333333" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_menu.xml" value="0.16530797101449277" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_menu2.xml" value="0.16530797101449277" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_reservation_menu.xml" value="0.1598731884057971" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/activity_search_reservationactivity.xml" value="0.25" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/fragment_info.xml" value="0.22" />
         <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/fragment_news.xml" value="0.15942028985507245" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/fragment_saved.xml" value="0.3333333333333333" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/fragment_searchbar.xml" value="0.16666666666666666" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/news_list_item.xml" value="0.5" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/layout/reservation_item.xml" value="0.6" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/mipmap-anydpi-v26/ic_hotel.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/mipmap-anydpi-v26/ic_hotel_round.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21614583333333334" />
+        <entry key="..\:/SEPR/App/HotelReservationApp2021/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21614583333333334" />
       </map>
     </option>
   </component>

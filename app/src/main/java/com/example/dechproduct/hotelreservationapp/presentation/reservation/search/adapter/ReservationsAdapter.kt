@@ -30,10 +30,14 @@ class ReservationsAdapter(private val reservations: MutableList<Reservation>)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, index: Int) {
-        viewHolder.reserveName.text = reservations[index].firstName +"\n"+ reservations[index].lastName
-        viewHolder.reserveDateIn.text = reservations[index].reserveDateIn
-        viewHolder.reserveDateOut.text = reservations[index].reserveDateOut
-        viewHolder.reservePhoneNo.text = reservations[index].phoneNumber
+        viewHolder.reserveName.text =
+            reservations[index].firstName +"\n"+ reservations[index].lastName
+        viewHolder.reserveDateIn.text = "From Date: " +
+            reservations[index].reserveDateIn
+        viewHolder.reserveDateOut.text = "To Date: " +
+            reservations[index].reserveDateOut
+        viewHolder.reservePhoneNo.text = "Tel. " +
+            reservations[index].phoneNumber
     }
 
     override fun getItemCount() = reservations.size

@@ -18,6 +18,7 @@ class UserRepositoryImpl @Inject constructor(
         return try {
             val userNode = firebaseDatabase.reference.child(Constants.USER_DB_NODE)
             var user: User = User("", "", "")
+            var isFound: Boolean = false
 
             userNode.orderByChild(Constants.USER_KEY_USERNAME).equalTo(username).get()
                 .await().children.map { item ->
@@ -29,16 +30,16 @@ class UserRepositoryImpl @Inject constructor(
                             item.child(Constants.USER_KEY_USERNAME).getValue(String::class.java)
                         user.userDisplayName =
                             item.child(Constants.USER_KEY_NAME).getValue(String::class.java)
-                        Log.d("UserRepositoryImpl", "Authentication Success.")
-                        Resource.Success(user)
+                        isFound =true
                     }
-
                     else {
                         throw Exception("Authentication Failed.")
                     }
                 }
-            Log.d("UserRepositoryImpl", "Authentication Not really.")
-            Resource.Success(user)
+            if(isFound)
+                Resource.Success(user)
+            else
+                throw Exception("No User Found.")
         }
 
         catch(exception: Exception) {

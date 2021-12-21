@@ -54,10 +54,60 @@ class ReservationRepositoryImpl @Inject constructor(
             val bookingNode = firebaseDatabase.reference.child(Constants.BOOK_DB_NODE)
             var results: MutableList<Reservation> = mutableListOf<Reservation>()
 
-            var test:String = ""
+            var test: String = ""
 
-            bookingNode.orderByChild(Constants.BOOK_KEY_FNAME).equalTo(keyword).
-            get().await().children.map { item ->
+            bookingNode.orderByChild(Constants.BOOK_KEY_FNAME).equalTo(keyword).get()
+                .await().children.map { item ->
+                var reservation: Reservation = Reservation(
+                    item.child(Constants.BOOK_KEY_ID).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_FNAME).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_LNAME).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_PHONE).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_PAYMENT).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_DATE_IN).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_DATE_OUT).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_PASSPORT).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_SSN).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_ADDRESS).getValue(String::class.java),
+                )
+
+                results.add(reservation)
+                //Log.d("ReserveRepo",test)
+            }
+
+            bookingNode.orderByChild(Constants.BOOK_KEY_LNAME).equalTo(keyword).get()
+                .await().children.map { item ->
+                var reservation: Reservation = Reservation(
+                    item.child(Constants.BOOK_KEY_ID).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_FNAME).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_LNAME).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_PHONE).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_PAYMENT).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_DATE_IN).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_DATE_OUT).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_PASSPORT).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_SSN).getValue(String::class.java),
+                    item.child(Constants.BOOK_KEY_ADDRESS).getValue(String::class.java),
+                )
+
+                results.add(reservation)
+                //Log.d("ReserveRepo",test)
+            }
+
+            Resource.Success(results)
+        } catch (exception: Exception) {
+            Resource.Failure(exception)
+        }
+    }
+
+    override suspend fun populateReservation(): Resource<MutableList<Reservation>> {
+        return try {
+            val bookingNode = firebaseDatabase.reference.child(Constants.BOOK_DB_NODE)
+            var results: MutableList<Reservation> = mutableListOf<Reservation>()
+
+            var test: String = ""
+
+            bookingNode.orderByChild(Constants.BOOK_KEY_FNAME).get().await().children.map { item ->
                 var reservation: Reservation = Reservation(
                     item.child(Constants.BOOK_KEY_ID).getValue(String::class.java),
                     item.child(Constants.BOOK_KEY_FNAME).getValue(String::class.java),
@@ -73,57 +123,7 @@ class ReservationRepositoryImpl @Inject constructor(
                 results.add(reservation)
                 //Log.d("ReserveRepo",test)
             }
-            /*
-            bookingNode.orderByChild(Constants.BOOK_KEY_FNAME).equalTo(keyword)
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        for (item in dataSnapshot.children) {
-                            var reservation: Reservation = Reservation(
-                                item.child(Constants.BOOK_KEY_ID).getValue(Int::class.java),
-                                item.child(Constants.BOOK_KEY_FNAME).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_LNAME).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_PHONE).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_PAYMENT).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_DATE).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_PASSPORT).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_SSN).getValue(String::class.java),
-                                item.child(Constants.BOOK_KEY_ADDRESS).getValue(String::class.java),
-                            )
-
-                            if (reservation != null) {
-                                //Log.d("ReserveRepositoryImpl","${node::class.simpleName}")
-                                results.add(reservation)
-                            } else {
-                                Log.d("ReserveRepositoryImpl", "node is empty")
-                            }
-                        }
-                    }
-
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        Log.w(
-                            "ReserveRepositoryImpl",
-                            "loadPost:onCancelled", databaseError.toException()
-                        )
-                    }
-                })
-             */
-
             Resource.Success(results)
-
-        } catch (exception: Exception) {
-            Resource.Failure(exception)
-        }
-    }
-
-    override suspend fun populateReservation(): Resource<MutableList<Reservation>> {
-        return try {
-            val bookingNode = firebaseDatabase.getReference(Constants.BOOK_DB_NODE)
-            var result: MutableList<Reservation> = mutableListOf<Reservation>()
-
-            bookingNode.get().addOnSuccessListener {
-                //Placeholder
-            }
-            Resource.Success(result)
         } catch (exception: Exception) {
             Resource.Failure(exception)
         }

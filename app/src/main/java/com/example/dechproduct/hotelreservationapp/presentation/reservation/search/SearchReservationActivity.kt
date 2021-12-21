@@ -47,22 +47,33 @@ class SearchReservationActivity : AppCompatActivity() {
         var searchBar = findViewById<SearchView>(R.id.searchBar)
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {
-                    lifecycleScope.launch{
-                        searchReservationViewModel.searchReserve(query)
-                    }
+                    if(query == "")
+                        lifecycleScope.launch{
+                            searchReservationViewModel.populateReserve()
+                        }
+                    else
+                        lifecycleScope.launch {
+                            searchReservationViewModel.searchReserve(query.capitalize())
+                        }
                     return false
                 }
 
                 override fun onQueryTextChange(newText: String): Boolean {
-                    //TODO: Add search here, optional.
-                    //Log.d("SearchResActivity",newText)
-                    lifecycleScope.launch{
-                        searchReservationViewModel.searchReserve(newText)
-                    }
+                    if(newText == "")
+                        lifecycleScope.launch{
+                            searchReservationViewModel.populateReserve()
+                        }
+                    else
+                        lifecycleScope.launch{
+                            searchReservationViewModel.searchReserve(newText.capitalize())
+                        }
                     return false
                 }
             })
         findViewById<RecyclerView>(R.id.reservationList).layoutManager = LinearLayoutManager(this)
+        lifecycleScope.launch{
+            searchReservationViewModel.populateReserve()
+        }
         observeSearch()
     }
 

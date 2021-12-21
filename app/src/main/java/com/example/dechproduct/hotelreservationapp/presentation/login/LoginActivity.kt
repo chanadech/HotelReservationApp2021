@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
                         sharedPreferences.edit()
                             .putString(Constants.LOGGED_IN_DISPLAY_NAME, user.userDisplayName).apply()
 
+                        Toast.makeText(applicationContext,"Welcome! "+ user.userDisplayName ,Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, MenuActivity::class.java )
                         startActivity(intent)
                     }
